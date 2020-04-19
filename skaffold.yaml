@@ -10,7 +10,6 @@ deploy:
   kubectl:
     manifests:
     - ./istio/deployment-product.yaml
-    - ./istio/gateway.yaml
     - ./istio/virtual-service.yaml
 profiles:
 - name: james, dev, kubernetes, istio

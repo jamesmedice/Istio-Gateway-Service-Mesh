@@ -22,13 +22,13 @@ public class EnvironmentResource {
 	@Autowired
 	Environment environment;
 
-	@RequestMapping(value = "/env", method = RequestMethod.GET)
+	@RequestMapping(value = "/system", method = RequestMethod.GET)
 	public Map<String, String> env() {
 		logger.info("microservice envVars() invoked");
 		return System.getenv();
 	}
 
-	@RequestMapping(value = "/activeProfiles", method = RequestMethod.GET)
+	@RequestMapping(value = "/profiles", method = RequestMethod.GET)
 	public String[] activeProfiles() {
 		logger.info("microservice activeProfiles() invoked");
 		return environment.getActiveProfiles();

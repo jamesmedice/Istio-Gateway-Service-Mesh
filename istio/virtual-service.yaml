@@ -4,12 +4,15 @@ metadata:
   name: product-virtual-service
 spec:
   hosts:
-  - "apiserver.istioinaction.io"
+  - '*'
   gateways:
-  - product-gateway
+  - istio-system/ingressgateway
   http:
-  - route:
+  - match:
+    - uri:
+        prefix: /
+    route:
     - destination:
         host: product-service
         port:
-          number: 9999
+          number: 8000
