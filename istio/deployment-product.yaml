@@ -29,5 +29,5 @@ spec:
     protocol: TCP
   selector:
     app: product-service
-  type: NodePort
+  type: ClusterIP
 ---

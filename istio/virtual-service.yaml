@@ -4,15 +4,19 @@ metadata:
   name: product-virtual-service
 spec:
   hosts:
-  - '*'
+    - '*'
   gateways:
-  - istio-system/ingressgateway
+    - istio-system/ingressgateway
   http:
-  - match:
-    - uri:
-        prefix: /
-    route:
-    - destination:
-        host: product-service
-        port:
-          number: 8000
+    - match:
+        - uri:
+            prefix: /product/
+        - uri:
+            prefix: /product
+      rewrite:
+        uri: /
+      route:
+        - destination:
+            host: product-service
+            port:
+              number: 8000
