@@ -1,6 +1,4 @@
-###########################################
-# IN CASE THERE IS NO GATEWAY> CREATE ONE #
-###########################################
+---
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
@@ -9,15 +7,9 @@ spec:
   selector:
     istio: ingressgateway
   servers:
-  - hosts:
-    - '*'
-    port:
-      name: http
+  - port:
       number: 80
+      name: http
       protocol: HTTP
-  - hosts:
-    - '*'
-    port:
-      name: tcp
-      number: 5000
-      protocol: TCP
+    hosts:
+    - "*"

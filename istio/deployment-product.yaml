@@ -1,9 +1,16 @@
-apiVersion: extensions/v1beta1
+---
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: product-service-v1
+  labels:
+    version: v1
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: product-service
+      version: v1
   template:
     metadata:
       labels:
@@ -12,8 +19,8 @@ spec:
     spec:
       containers:
       - name: product-service
-        image: jamesmedice/product-service
-        imagePullPolicy: Never
+        image: jamesmedice/product-svc
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8000
 ---
